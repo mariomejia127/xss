@@ -3,7 +3,7 @@ export default function ThankYou() {
      
      <div>
         <h1>Thank You</h1>
-        <p>Your message has been received. We'll get back to you soon.</p>
+        <p>Your message has been received. We' will get back to you soon.</p>
       
       </div>
       
