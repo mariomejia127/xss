@@ -7,6 +7,49 @@ export default function Home() {
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
+  const popText = "This flag for this challenge is in the following format: {FLAG-DLOCALSECURITYTEAM-000000000000000000000000}"
+
+  function PopupButton() {
+    const [isOpen, setIsOpen] = useState(false);
+  
+    return (
+      <div>
+        <button onClick={() => setIsOpen(true)}>Need Help?</button>
+        {isOpen && (
+          <div style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            fontSize: '12px',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'gray',
+            color: 'black',
+            textAlign: 'inherit',
+            padding: '200px',
+            borderRadius: '5px',
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+            zIndex: 1000
+          }}>
+            <button 
+              onClick={() => setIsOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                background: 'none',
+                border: 'none',
+                fontSize: '18px',
+                cursor: 'pointer'
+              }}
+            >
+              X
+            </button>
+            <p>{popText}</p>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   const validateInput = (input) => {
     const forbiddenChars = ['<', '>', '"', "'", '&', '/', '\\']
@@ -91,6 +134,13 @@ export default function Home() {
                 ></textarea>
               </div>
               <button type="submit">Send</button>
+
+              <br></br>
+              <br></br>
+              <div>
+              <PopupButton></PopupButton>
+              </div>
+
             </form>
           </div>
         </section>
